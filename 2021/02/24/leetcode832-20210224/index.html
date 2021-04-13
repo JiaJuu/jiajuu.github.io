@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leetcode 832.翻转图像 2021.02.24 - JIAJUU</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JiaJuu,"> 
+    <meta name="description" content="832.翻转图像
+
+难度：简单
+
+
+
+给定一个二进制矩阵 A，我们想先水平翻转图像，然后反转图像并返回结果。
+水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 [1, 1, 0] 的,"> 
+    <meta name="author" content="jiajuu"> 
+    <link rel="alternative" href="atom.xml" title="JIAJUU" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">JIAJUU</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://jiajuu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Leetcode 832.翻转图像 2021.02.24</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Leetcode 832.翻转图像 2021.02.24</h1>
+        <div class="stuff">
+            <span>二月 24, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="832-翻转图像"><a href="#832-翻转图像" class="headerlink" title="832.翻转图像"></a>832.翻转图像</h1><blockquote>
+<ul>
+<li>难度：简单</li>
+</ul>
+<br>
+
+<p>给定一个二进制矩阵 <code>A</code>，我们想先水平翻转图像，然后反转图像并返回结果。</p>
+<p>水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 <code>[1, 1, 0]</code> 的结果是 <code>[0, 1, 1]</code>。</p>
+<p>反转图片的意思是图片中的 <code>0</code> 全部被 <code>1</code> 替换， <code>1</code> 全部被 <code>0</code> 替换。例如，反转 <code>[0, 1, 1]</code> 的结果是 <code>[1, 0, 0]</code>。</p>
+</blockquote>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>示例1：</p>
+<blockquote>
+<p>输入：[[1,1,0],[1,0,1],[0,0,0]]<br>输出：[[1,0,0],[0,1,0],[1,1,1]]<br>解释：首先翻转每一行: [[0,1,1],[1,0,1],[0,0,0]]；<br>     然后反转图片: [[1,0,0],[0,1,0],[1,1,1]]</p>
+</blockquote>
+<p>示例2：</p>
+<blockquote>
+<p>输入：[[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]<br>输出：[[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]<br>解释：首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]；<br>     然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]</p>
+</blockquote>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><blockquote>
+<ul>
+<li>1 &lt;= A.length = A[0].length &lt;= 20</li>
+<li>0 &lt;= A[i][j] &lt;= 1</li>
+</ul>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li><p>双指针</p>
+<ol>
+<li>遍历数组A</li>
+<li>左指针指向数组a头，右指针指向数组b的尾</li>
+<li>左指针赋值到临时变量temp中</li>
+<li>取反的右指针赋值到左指针</li>
+<li>取反的临时变量temp赋值到右指针</li>
+<li>左指针右移</li>
+<li>右指针左移</li>
+<li>直至左指针大于右指针</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>无敌外挂大法</p>
+<ol>
+<li>逐位求反</li>
+<li>调用STL中的alalgorithm库中的<code>reverse()</code>函数反转数组</li>
+</ol>
+</li>
+</ul>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//双指针大法好</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; flipAndInvertImage(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A) &#123;</span><br><span class="line">    <span class="comment">//遍历数组A</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;a : A)&#123;</span><br><span class="line">        <span class="comment">//左指针指向数组a头，右指针指向数组b的尾</span></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = a.size()<span class="number">-1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//直至左指针大于右指针</span></span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="comment">//左指针赋值到临时变量temp中</span></span><br><span class="line">            <span class="keyword">int</span> temp = a[left];</span><br><span class="line">            <span class="comment">//取反的右指针赋值到左指针</span></span><br><span class="line">            a[left] = !a[right];</span><br><span class="line">            <span class="comment">//取反的临时变量temp赋值到右指针</span></span><br><span class="line">            a[right] = !temp;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//左指针右移</span></span><br><span class="line">            left++;</span><br><span class="line">            <span class="comment">//右指针左移</span></span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//无敌外挂</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; flipAndInvertImage(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A) &#123;</span><br><span class="line">	<span class="comment">//逐位求反</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;a :A)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;aa:a)&#123;</span><br><span class="line">			aa = !aa;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//调用STL中的alalgorithm库中的`reverse()`函数反转数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;a : A)&#123;</span><br><span class="line">        reverse(a.begin(),a.end());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/425137694.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <div id="gitalk-container" class="comment link"
+	 data-enable='true'
+	 data-ae='false'>查看评论</div>
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#832-%E7%BF%BB%E8%BD%AC%E5%9B%BE%E5%83%8F"><span class="toc-number">1.</span> <span class="toc-text">832.翻转图像</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">4.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">代码实现</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

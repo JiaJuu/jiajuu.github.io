@@ -1,0 +1,699 @@
+
+<!DOCTYPE html>
+<html lang="cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shell-算数计算 - JIAJUU</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JiaJuu,"> 
+    <meta name="description" content="算数运算符expr求值表达式
+可以实现整数计算
+可以对字符串进行处理(例如计算字符串长度、字符串比较、字符串匹配、字符串提取)
+
+123expr 1 + 1 #直接输出结果res=`expr 1 +,"> 
+    <meta name="author" content="jiajuu"> 
+    <link rel="alternative" href="atom.xml" title="JIAJUU" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">JIAJUU</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://jiajuu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Shell-算数计算</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Shell-算数计算</h1>
+        <div class="stuff">
+            <span>二月 23, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Shell/" rel="tag">Shell</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h1><h2 id="expr求值表达式"><a href="#expr求值表达式" class="headerlink" title="expr求值表达式"></a>expr求值表达式</h2><blockquote>
+<p>可以实现整数计算</p>
+<p>可以对字符串进行处理(例如计算字符串长度、字符串比较、字符串匹配、字符串提取)</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expr 1 + 1 #直接输出结果</span><br><span class="line"></span><br><span class="line">res=`expr 1 + 1` #返回结果给res变量</span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>+</code></td>
+<td>加法</td>
+<td><code>expr $a + $b</code>结果为3</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>减法</td>
+<td><code>expr $a - $b</code>结果为-1</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>乘法</td>
+<td><code>expr $a \* $b</code>结果为2</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>除法</td>
+<td><code>expr $a / $b</code>结果为2</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>取余</td>
+<td><code>expr $a % $b</code>结果为0</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>赋值</td>
+<td><code>a=$b</code>把变量b赋值给变量a</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>其中a = 1，b = 2</p>
+<p>注意：四则运算中使用<code>()</code>也需要转义<code>\( 1 + 1 \)</code></p>
+</blockquote>
+<h1 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h1><h2 id="整数比较"><a href="#整数比较" class="headerlink" title="整数比较"></a>整数比较</h2><table>
+<thead>
+<tr>
+<th>运算符eq</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-eq</code></td>
+<td>equals检测两个数是否相等，相等返回0，否则返回1。</td>
+<td><code>[ $a -eq $b ]</code>返回1</td>
+</tr>
+<tr>
+<td><code>-ne</code></td>
+<td>not equals检测两个数是否不相等，不相等返回ture</td>
+<td><code>[ $a -ne $b ]</code>返回0</td>
+</tr>
+<tr>
+<td><code>-gt</code></td>
+<td>greater than 检测左边数是否大于右边数，大于返回0，否则返回1</td>
+<td><code>[ $a -gt $b ]</code>返回1</td>
+</tr>
+<tr>
+<td><code>-lt</code></td>
+<td>lower than 检测左边数是否小于右边数，小于返回0，否则返回1</td>
+<td><code>[ $a -lt $b ]</code>返回0</td>
+</tr>
+<tr>
+<td><code>-ge</code></td>
+<td>greater equals检测左边数是否大于等于右边数，大于等于返回0，否则返回1</td>
+<td><code>[ $a -ge $b ]</code>返回1</td>
+</tr>
+<tr>
+<td><code>-le</code></td>
+<td>lower equals 检测左边数是否小于等于右边数，小于等于返回0，否则返回1</td>
+<td><code>[ $a -le $b ]</code>返回0</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>检测左边数是否小于右边数，小于返回0，否则返回1</td>
+<td><code>(($a&lt;$b))</code>返回1</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>检测左边数是否小于等于右边数，小于等于返回0，否则返回1</td>
+<td><code>(($a&lt;=$b))</code>返回0</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>检测左边数是否大于右边数，大于返回0，否则返回1</td>
+<td><code>(($a&gt;=$b))</code>返回1</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>检测左边数是否大于等于右边数，大于等于返回0，否则返回1</td>
+<td><code>(($a&gt;=$b))</code>返回0</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>检测两个数是否相等，相等返回0，否则返回1。</td>
+<td><code>(($a==$b))</code>返回0</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>检测两个数是否不相等，不相等返回true</td>
+<td><code>(($a!=$b))</code>返回1</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>其中a = 1，b = 1</p>
+<p>注意：整数比较运算符仅支持整数运算，不支持浮点数与字符串</p>
+<p><code>[]</code>与 <code>(())</code>的区别：</p>
+<ul>
+<li><code>[]</code>参数为<code>-eq</code> <code>-gt</code> <code>-ge</code> <code>-lt</code> <code>-le</code> <code>ne</code></li>
+<li><code>()</code>参数为 <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> <code>==</code> <code>!=</code></li>
+</ul>
+</blockquote>
+<h2 id="字符串比较运算符"><a href="#字符串比较运算符" class="headerlink" title="字符串比较运算符"></a>字符串比较运算符</h2><blockquote>
+<p>可以比较数字与字符串</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>==</code>或者<code>=</code></td>
+<td>相等,用于比较两个字符串或数字,相同返回0</td>
+<td><code>[ $a == $b ]</code>返回1<br><code> [ $a = $b ]</code>返回1<br><code>[[ $a == $b ]]</code>返回1<br><code>[[ $a = $b ]]</code>返回1</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>不相等,用于比较两个字符串或数字,不相同返回0</td>
+<td><code>[ $a != $b ]</code>返回0<br/><code>[[ $a != $b]]</code>返回0</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>小于,用于比较两个字符串或数字,小于返回0,否则返回1</td>
+<td><code>[ $a \&lt; $b ]</code>返回0<br/><code>[[ $a &lt; $b]]</code>返回0</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>大于,用于比较两个字符串或数字,大于返回0,否则返回1</td>
+<td><code>[ $a \&gt; $b ]</code>返回1<br/><code>[[ $a &gt; $b]]</code>返回1</td>
+</tr>
+<tr>
+<td><code>-z</code></td>
+<td>检测字符串长度是否为0,为0返回true</td>
+<td>[-z “$a”]返回false</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>检测字符串长度是否不为0,不为0返回true</td>
+<td>[-n “$a”]返回true</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>检测字符串长度是否为空,不为空返回true</td>
+<td>[ $a ]返回true</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>其中a=”abc”,b=”efg”</p>
+<p>注意：字符串比较没有<code>&lt;=</code>,但是可以通过<code>[[ &quot;a&quot; &lt; &quot;b&quot; &amp;&amp; &quot;a&quot; == &quot;b&quot; ]]</code></p>
+<br>
+
+<p><code>[]</code>与 <code>[[]]</code>的区别：</p>
+<ul>
+<li><p>区别①</p>
+<p><code>[]</code>会有word splitting发生,即将含有空格字符的字符串进行分拆分割后再进行比较</p>
+<p><code>[[]]</code>不会有word splitting发生</p>
+</li>
+<li><p>区别②</p>
+<p><code>[]</code>不会对<code>&lt;</code>进行转义,需要手动转义</p>
+<p><code>[[]]</code>自动对<code>&lt;</code>进行转义,不需要手动转义</p>
+</li>
+</ul>
+</blockquote>
+<h1 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h1><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!</code></td>
+<td>非运算,取反,表达式为true则返回false,否则返回true</td>
+<td><code>[ ! 表达式 ]</code>取反</td>
+</tr>
+<tr>
+<td><code>-o</code></td>
+<td>or或运算,有一个表达式为true则返回true</td>
+<td><code>[ 表达式1 -o 表达式2 ]</code></td>
+</tr>
+<tr>
+<td><code>-a</code></td>
+<td>and与运算,两个表达式都为true才返回true</td>
+<td><code>[ 表达式1 -a 表达式2 ]</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：布尔运算符需要与<code>[]</code>或<code>test</code>命令配合使用才有效</p>
+</blockquote>
+<h1 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h1><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&amp;&amp;</code></td>
+<td>逻辑AND</td>
+<td><code>[[ 表达式1 &amp;&amp; 表达式2 ]]</code></td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>逻辑OR</td>
+<td><code>[[ 表达式1 || 表达式2 ]]</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>逻辑NOT</td>
+<td><code>[[ ! 表达式 ]]</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>使用<code>&amp;&amp;</code> 与<code>||</code>需要配合<code>[[]]</code>或<code>(())</code>使用,否则会报错(╯▔皿▔)╯</li>
+<li><code>!</code>可以配合<code>[]</code> 或<code>[[]]</code>,但是不可以配合<code>(())</code></li>
+</ul>
+<br>
+
+<p>逻辑运算符与布尔运算符区别：</p>
+<ul>
+<li>布尔运算符：<code>!</code> <code>-o</code> <code>-a</code> 且必须搭配<code>[]</code>或<code>test</code>命令使用</li>
+<li>逻辑运算符： <code>||</code> <code>&amp;&amp;</code>且必须搭配<code>[[]]</code>或<code>(())</code>使用,<code>!</code>不能配合<code>(())</code>使用</li>
+</ul>
+</blockquote>
+<h1 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h1><blockquote>
+<p>用于检测文件</p>
+<p>检测文件是否存在\是否可读\是否可执行\是否为空\是否可写\是否为名录\是否是普通文件</p>
+</blockquote>
+<h2 id="linux系统文件类型"><a href="#linux系统文件类型" class="headerlink" title="linux系统文件类型"></a>linux系统文件类型</h2><p><code>-</code>：普通文件</p>
+<p><code>d</code>：目录文件</p>
+<p><code>l</code>：链接文件</p>
+<p><code>b</code>：块设备文件</p>
+<blockquote>
+<p>对应计算机硬件,以块为单位传输数据</p>
+</blockquote>
+<p><code>c</code>：字符设备文件</p>
+<blockquote>
+<p>对应计算机硬件,以字符为单位传输数据</p>
+</blockquote>
+<p><code>p</code>：管道文件</p>
+<h2 id="文件属性检测"><a href="#文件属性检测" class="headerlink" title="文件属性检测"></a>文件属性检测</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-b file</code></td>
+<td>检测文件是否为块设备文件,是返回true</td>
+<td><code>[ -b $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-c file</code></td>
+<td>检测文件是否为字符设备文件,是返回true</td>
+<td><code>[ -c $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-d file</code></td>
+<td>directory,检测文件是否为目录,是返回true</td>
+<td><code>[ -d $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-f file</code></td>
+<td>file,检测文件是否为普通文件,是返回true</td>
+<td><code>[ -f $file ]</code>返回ture</td>
+</tr>
+<tr>
+<td><code>-g file</code></td>
+<td>检测文件是否设置了SGID位,是返回true</td>
+<td><code>[ -g $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-k file</code></td>
+<td>检测文件是否设置了粘着位,是返回true</td>
+<td><code>[ -k $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-p file</code></td>
+<td>检测文件是否为有名管道文件,是返回true</td>
+<td><code>[ -p $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-u file</code></td>
+<td>检测文件是否设置了SUID位,是返回true</td>
+<td><code>[ -u $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-r file</code></td>
+<td>read,检测文件是否可读,是返回true</td>
+<td><code>[ -r $file ]</code>返回true</td>
+</tr>
+<tr>
+<td><code>-w file</code></td>
+<td>write,检测文件是否可写,是返回true</td>
+<td><code>[ -w $file ]</code>返回true</td>
+</tr>
+<tr>
+<td><code>-x file</code></td>
+<td>execute,检测文件是否可执行,是返回true</td>
+<td><code>[ -x $file ]</code>返回true</td>
+</tr>
+<tr>
+<td><code>-s file</code></td>
+<td>size,检测文件是否为空,是返回true</td>
+<td><code>[ -s $file ]</code>返回true</td>
+</tr>
+<tr>
+<td><code>-e file</code></td>
+<td>exists,检测文件是否存在,是返回true</td>
+<td><code>[ -e $file ]</code>返回true</td>
+</tr>
+<tr>
+<td><code>file1 -nt file2</code></td>
+<td>newer than,检测文件1是否比文件2新,是返回true</td>
+<td><code>[ file1 -nt file2 ]</code>返回</td>
+</tr>
+<tr>
+<td><code>file1 -ot file2</code></td>
+<td>older than,检测文件1是否比文件2旧,是返回true</td>
+<td><code>[ $file1 -ot file2 ]</code>返回</td>
+</tr>
+<tr>
+<td><code>-S file</code></td>
+<td>socket,检测文件是否为socket,是返回true</td>
+<td><code>[ -S $file ]</code>返回false</td>
+</tr>
+<tr>
+<td><code>-L file</code></td>
+<td>link,检测文件是否存在并且是一个符号链接,是返回true</td>
+<td><code>[ -L $file ]</code>返回false</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li><p>配合<code>[]</code>或<code>[[]]</code>均可</p>
+</li>
+<li><p>file需要为路径字符串</p>
+</li>
+</ul>
+</blockquote>
+<h1 id="计算命令"><a href="#计算命令" class="headerlink" title="计算命令"></a>计算命令</h1><h2 id="expr命令详解"><a href="#expr命令详解" class="headerlink" title="expr命令详解"></a>expr命令详解</h2><blockquote>
+<p>优点：可以直接输出整数表达式结果</p>
+<p>缺点：</p>
+<ol>
+<li>表达式内引用变量需要使用<code>$</code></li>
+<li>特殊字符需要转义</li>
+<li>只能计算一个表达式</li>
+</ol>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">计算语法</span></span><br><span class="line">expr 1 + 1 #返回2</span><br><span class="line">expr \( 10 + 10 \) \* 2 + 100 #返回140</span><br><span class="line">res=`expr 1 + 1` #输出结果给res变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">字符串语法</span></span><br><span class="line"><span class="meta">#</span><span class="bash">计算字符串长度</span></span><br><span class="line">expr length &quot;jiajuu&quot; #返回6</span><br><span class="line"><span class="meta">#</span><span class="bash">截取字符串</span></span><br><span class="line">expr substr &quot;jiajuu&quot; 1 3 #返回jia</span><br><span class="line"><span class="meta">#</span><span class="bash">获取第一个字符再字符串出现的位置</span></span><br><span class="line">expr index &quot;jiajuu&quot; i #返回2</span><br><span class="line"><span class="meta">#</span><span class="bash">正则表达式匹配</span></span><br><span class="line">expr match &quot;jiajuu&quot; &quot;.*a&quot; #返回3</span><br><span class="line">expr &quot;jiajuu&quot; : &quot;.*a&quot; #返回3</span><br></pre></td></tr></table></figure>
+<h2 id="命令详解"><a href="#命令详解" class="headerlink" title="(())命令详解"></a>(())命令详解</h2><blockquote>
+<p><code>(())</code>可用于进行数学运算表达式的执行</p>
+<p>并且可以使用<code>$</code>获取<code>(())</code>表达式命令中的结果</p>
+<p><br>优点：</p>
+<ol>
+<li>直接计算表达式，特殊符号不需要转义</li>
+<li>可以多个表达式赋值</li>
+</ol>
+<p>缺点：需要变量获取结果才能输出</p>
+<p>(悄悄话：直接输出计算结果推荐方式（b(￣▽￣)d）)</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">计算完成给变量赋值,注意：不需要添加<span class="string">&quot;$&quot;</span>,能自动解析变量</span></span><br><span class="line">((a=1+6))</span><br><span class="line">((b=a-1))</span><br><span class="line">((c=a+b))</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">用<span class="string">&quot;(())&quot;</span>前添加<span class="string">&quot;$&quot;</span>获取<span class="string">&quot;(())&quot;</span>命令的结果</span></span><br><span class="line">a=$((1+6))</span><br><span class="line">b=$((a-1))</span><br><span class="line">c=$((a+b))she</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">用<span class="string">&quot;(())&quot;</span>进行逻辑运算,常用于<span class="keyword">if</span>语句</span></span><br><span class="line"><span class="meta">((a&gt;</span><span class="bash">7 &amp;&amp; b==c))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">输出运算结果</span></span><br><span class="line">echo $((a+10))</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">对多个表达式同时进行计算,用<span class="string">&quot;,&quot;</span>进行分割</span></span><br><span class="line">((a=3+5,b=a+10))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="let命令详解"><a href="#let命令详解" class="headerlink" title="let命令详解"></a>let命令详解</h2><blockquote>
+<p>与<code>(())</code>命令在数字计算方面一样，</p>
+<p><code>let</code>是最简洁的整数运算赋值命令，</p>
+<p>但是功能没有<code>(())</code>命令功能强大.<code>let</code>只能用于赋值计算,不能直接输出,也不可以进行条件判断。</p>
+<p><br>优点：赋值简单，特殊符号不需要转义</p>
+<p>缺点：无法直接输出结果，需要变量获取结果再输出</p>
+<p>(悄悄话：赋值操作推荐方式（b(￣▽￣)d）)</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let a=1+6 #计算1+6赋值给变量a</span><br><span class="line"></span><br><span class="line">let b=a-1 #将变量a-1赋值给变量b</span><br><span class="line"></span><br><span class="line">let c=a+b #将变量a+变量b赋值给变量c</span><br><span class="line"></span><br><span class="line">let a=1+6 b=a-1 c=a+b #多个表达式计算赋值</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="命令详解-1"><a href="#命令详解-1" class="headerlink" title="$[]命令详解"></a>$[]命令详解</h2><blockquote>
+<p>和<code>(())</code>、<code>let</code>命令类似，</p>
+<p>但是<code>$[]</code>只能进行整数运算，且只能对单个表达式进行计算求值和输出</p>
+<p>而且内部不能对变量赋值</p>
+<p><br>优点：赋值简单，特殊符号不需要转义</p>
+<p>缺点：不能多表达式运算</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=$[1+6]</span><br><span class="line">b=$[a-1]</span><br><span class="line">c=$[a+b]</span><br><span class="line">echo &quot;$[1+6],$[a-1],$[a+b]&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="bc命令详解"><a href="#bc命令详解" class="headerlink" title="bc命令详解"></a>bc命令详解</h2><blockquote>
+<p>Bash Shell内置了对整型运算的支持，但是不提供符点运算</p>
+<p>而<code>bc</code>命令可以对符点型进行方便的符点运算，是linux简单的计算器</p>
+<p><code>bc</code>命令不仅可以进行任意精度的符点计算，还能进行进制的转换</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bc [options] [参数]</span><br></pre></td></tr></table></figure>
+
+<h3 id="options"><a href="#options" class="headerlink" title="options"></a>options</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-h</code></td>
+<td>help，帮助信息</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>version，显示命令版本信息</td>
+</tr>
+<tr>
+<td><code>-l</code></td>
+<td>mathlib，使用标准数学库，例如使用内置函数就需要使用这个选项</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>interactive，强制交互</td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td>warn，显示POSIX的警告信息</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>standard，使用POSIX标准来处理</td>
+</tr>
+<tr>
+<td><code>-q</code></td>
+<td>quiet，不显示欢迎信息(默认bc启动会有欢迎信息)</td>
+</tr>
+</tbody></table>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>指定包含计算任务的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bc task.txt</span><br></pre></td></tr></table></figure>
+<p>task.txt文件</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">108*67+12345</span><br><span class="line">58+2007*11</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h3><table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>scale</code></td>
+<td>指定精度，即小数点后的位数。默认为0，不适用小数部分</td>
+</tr>
+<tr>
+<td><code>ibase</code></td>
+<td>指定输入的数字进制。默认为十进制</td>
+</tr>
+<tr>
+<td><code>obase</code></td>
+<td>指定输出的数字进制。默认为十进制</td>
+</tr>
+<tr>
+<td><code>last</code>或者<code>.</code></td>
+<td>获取最近计算打印结果的数字</td>
+</tr>
+</tbody></table>
+<h3 id="内置数学函数"><a href="#内置数学函数" class="headerlink" title="内置数学函数"></a>内置数学函数</h3><blockquote>
+<p>需要把options设为-i，才能使用内置数学函数</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>s(x)</code></td>
+<td>计算x的正弦值，x是弧度值</td>
+</tr>
+<tr>
+<td><code>c(x)</code></td>
+<td>计算x的余弦值，x是弧度值</td>
+</tr>
+<tr>
+<td><code>a(x)</code></td>
+<td>计算x的反正切值，返回弧度值</td>
+</tr>
+<tr>
+<td><code>l(x)</code></td>
+<td>计算x的自然对数</td>
+</tr>
+<tr>
+<td><code>e(x)</code></td>
+<td>计算e的x次方</td>
+</tr>
+<tr>
+<td><code>j(n,x)</code></td>
+<td>计算从n到x的阶数</td>
+</tr>
+</tbody></table>
+<h3 id="借助管道使用bc运算"><a href="#借助管道使用bc运算" class="headerlink" title="借助管道使用bc运算"></a>借助管道使用bc运算</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">直接进行bc的表达式</span></span><br><span class="line">echo &quot;scale=2;9*6/3.3&quot; | bc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">引用Shell变量</span></span><br><span class="line">a=2</span><br><span class="line">echo &quot;b=$a+2;b&quot; | bc #其中的b是bc命令中的变量，不是Shell变量</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">将bc计算结果赋值给Shell变量</span></span><br><span class="line">value = `ehco &quot;1+1&quot; | bc` #所有linux系统均支持的方式</span><br><span class="line">value = $(ehco &quot;1+1&quot; | bc) #不是所有linux均支持</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>表达式必须符合bc命令要求的公式</p>
+<p>表达式可以引用shell变量</p>
+</blockquote>
+<h3 id="输入重定向到bc运算"><a href="#输入重定向到bc运算" class="headerlink" title="输入重定向到bc运算"></a>输入重定向到bc运算</h3><blockquote>
+<p>特点类似于文件中输入，支持多行表达式（b(￣▽￣)d）</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">方式一，使用``</span></span><br><span class="line">value=`bc &lt;&lt; EOF</span><br><span class="line">ibase=10;</span><br><span class="line">obase=2;</span><br><span class="line">b=9*9</span><br><span class="line">EOF</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">方式二，使用$()</span></span><br><span class="line">value=$(bc &lt;&lt; EOF</span><br><span class="line">ibase=10;</span><br><span class="line">obase=2;</span><br><span class="line">b=9*9</span><br><span class="line">EOF</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/425137694.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <div id="gitalk-container" class="comment link"
+	 data-enable='true'
+	 data-ae='false'>查看评论</div>
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">算数运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#expr%E6%B1%82%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">expr求值表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">比较运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E6%AF%94%E8%BE%83"><span class="toc-number">2.1.</span> <span class="toc-text">整数比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">字符串比较运算符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">布尔运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">4.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">5.</span> <span class="toc-text">文件测试运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.1.</span> <span class="toc-text">linux系统文件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7%E6%A3%80%E6%B5%8B"><span class="toc-number">5.2.</span> <span class="toc-text">文件属性检测</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">计算命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#expr%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.1.</span> <span class="toc-text">expr命令详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.2.</span> <span class="toc-text">(())命令详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#let%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.3.</span> <span class="toc-text">let命令详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3-1"><span class="toc-number">6.4.</span> <span class="toc-text">$[]命令详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bc%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.5.</span> <span class="toc-text">bc命令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#options"><span class="toc-number">6.5.1.</span> <span class="toc-text">options</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">6.5.2.</span> <span class="toc-text">参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="toc-number">6.5.3.</span> <span class="toc-text">内置变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="toc-number">6.5.4.</span> <span class="toc-text">内置数学函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%9F%E5%8A%A9%E7%AE%A1%E9%81%93%E4%BD%BF%E7%94%A8bc%E8%BF%90%E7%AE%97"><span class="toc-number">6.5.5.</span> <span class="toc-text">借助管道使用bc运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0bc%E8%BF%90%E7%AE%97"><span class="toc-number">6.5.6.</span> <span class="toc-text">输入重定向到bc运算</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

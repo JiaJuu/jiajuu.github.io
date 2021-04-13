@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leetcode 395.至少有K个重复字符的最长子串 2021.02.27 - JIAJUU</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JiaJuu,"> 
+    <meta name="description" content="395. 至少有 K 个重复字符的最长子串
+
+难度：中等
+
+
+
+给你一个字符串 s 和一个整数 k ，请你找出 s 中的最长子串， 要求该子串中的每一字符出现次数都不少于 k 。返回这一子串的长度。,"> 
+    <meta name="author" content="jiajuu"> 
+    <link rel="alternative" href="atom.xml" title="JIAJUU" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">JIAJUU</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://jiajuu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Leetcode 395.至少有K个重复字符的最长子串 2021.02.27</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Leetcode 395.至少有K个重复字符的最长子串 2021.02.27</h1>
+        <div class="stuff">
+            <span>二月 27, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="395-至少有-K-个重复字符的最长子串"><a href="#395-至少有-K-个重复字符的最长子串" class="headerlink" title="395. 至少有 K 个重复字符的最长子串"></a>395. 至少有 K 个重复字符的最长子串</h1><blockquote>
+<ul>
+<li>难度：中等</li>
+</ul>
+<br>
+
+<p>给你一个字符串 <code>s</code> 和一个整数 <code>k</code> ，请你找出 <code>s</code> 中的最长子串， 要求该子串中的每一字符出现次数都不少于 <code>k</code> 。返回这一子串的长度。</p>
+</blockquote>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>示例1：</p>
+<blockquote>
+<p>输入：s = “aaabb”, k = 3<br>输出：3<br>解释：最长子串为 “aaa” ，其中 ‘a’ 重复了 3 次。</p>
+</blockquote>
+<p>示例2：</p>
+<blockquote>
+<p>输入：s = “ababbc”, k = 2<br>输出：5<br>解释：最长子串为 “ababb” ，其中 ‘a’ 重复了 2 次， ‘b’ 重复了 3 次。</p>
+</blockquote>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><blockquote>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 104</code></li>
+<li><code>s</code> 仅由小写英文字母组成</li>
+<li><code>1 &lt;= k &lt;= 105</code></li>
+</ul>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li><p>滑动窗口+双指针</p>
+<blockquote>
+<p><code>charType</code>为假设的字符种类数</p>
+<p><code>charHash</code>为哈希数组</p>
+<p><code>less</code>为不足k的字符种类数</p>
+<p><code>typeTotal</code>为当前哈希数组内的字符种类数</p>
+</blockquote>
+<ol>
+<li>首先我们假设最长字串仅有一个字符符合题目要求，逐步增加，直至假设26个字符都符合题目</li>
+<li>接着我们用左、右双指针指向字符串的头</li>
+<li>如果右指针未到字符串的尾部<ol>
+<li>把右指针指向的字符加进一个哈希数组里<ol>
+<li>如果哈希数组对应字符的值为1，说明刚才这个值是新加进去的，刚才并没有这个值，则<code>less</code>、<code>typeTotal</code>均加1</li>
+<li>如果哈希数组对应字符的值为k，说明这个数达到k的要求了，<code>less</code>就能减1</li>
+</ol>
+</li>
+<li>如果当前哈希数组内的字符种类数超出我们假设的字符种类数，我们便把左指针指向的字符从哈希数组中减去，直至<code>typeTotal</code>≤<code>charType</code><ol>
+<li>如果哈希数组对应字符的值为k-1，说明这个字符刚才符合k的要求，现在缺不符合了，<code>less</code>需要加1</li>
+<li>如果哈希数组对应字符的值为0，说明这个字符现在不存在我们的窗口内了，<code>less</code>、<code>typeTotal</code>均需要减1</li>
+<li>左移左指针</li>
+</ol>
+</li>
+<li>当<code>less</code>等于0，说明窗口内的字符符合题目要求，与以往的字串比较，取最长的。</li>
+<li>左移右指针</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">longestSubstring</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//假设最长窗口内包含的不同字符种类</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> charType = <span class="number">1</span>;charType &lt;= <span class="number">26</span>;charType++)&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;<span class="comment">//左指针</span></span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>;<span class="comment">//右指针</span></span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">charHash</span><span class="params">(<span class="number">26</span>, <span class="number">0</span>)</span></span>;<span class="comment">//哈希数组</span></span><br><span class="line">        <span class="keyword">int</span> less = <span class="number">0</span>;<span class="comment">//不符合k个字符的字符种类数</span></span><br><span class="line">        <span class="keyword">int</span> typeTotal = <span class="number">0</span>;<span class="comment">//窗口内包含的字符种类数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//直至右指针直到字符串结尾</span></span><br><span class="line">        <span class="keyword">while</span>(r &lt; s.length())&#123;</span><br><span class="line">            <span class="comment">//右指针指向的字符存取哈希数组中</span></span><br><span class="line">        	charHash[s[r] - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//判断字符对应哈希数组的数组是否等于1，等于1说明刚才并没有这个字符种类</span></span><br><span class="line">            <span class="keyword">if</span>(charHash[s[r] - <span class="string">&#x27;a&#x27;</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">                less++;<span class="comment">//不足k个字符种类数加1</span></span><br><span class="line">                typeTotal++;<span class="comment">//窗口内的字符种类数加1</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//判断字符对应哈希数组的数组是否等于K，等于K说明刚才并没有符合k个字符的要求</span></span><br><span class="line">            <span class="keyword">if</span>(charHash[s[r] - <span class="string">&#x27;a&#x27;</span>] == k)&#123;</span><br><span class="line">                less--;<span class="comment">//现在符合了，不足k个字符种类数减1</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//直至窗口内的字符种类数少于我们假设的字符数</span></span><br><span class="line">            <span class="keyword">while</span>(typeTotal &gt; charType)&#123;</span><br><span class="line">                <span class="comment">//减去哈希数组中左指针指向的字符</span></span><br><span class="line">                charHash[s[l] - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">//判断字符对应哈希数组的数组是否等于K-1，等于K-1说明刚才符合k个字符的要求</span></span><br><span class="line">                <span class="keyword">if</span>(charHash[s[l] - <span class="string">&#x27;a&#x27;</span>] == k<span class="number">-1</span>)&#123;</span><br><span class="line">                    less++;<span class="comment">//现在不符合了，不足k个字符种类数加1</span></span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                <span class="comment">//判断字符对应哈希数组的数组是否等于0，等于0说明刚才存在这个字符</span></span><br><span class="line">                <span class="keyword">if</span>(charHash[s[l] - <span class="string">&#x27;a&#x27;</span>] ==  <span class="number">0</span>)&#123;</span><br><span class="line">                    typeTotal--;<span class="comment">//窗口内的字符种类数减1</span></span><br><span class="line">                    less--;<span class="comment">//现在这个字符不存在了，不足k个字符种类数减1</span></span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                l++;<span class="comment">//右移左指针</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//less为零说明窗口内的字符串符合题目要求</span></span><br><span class="line">            <span class="keyword">if</span>(less == <span class="number">0</span>)&#123;</span><br><span class="line">                res = max(res,r-l+<span class="number">1</span>);<span class="comment">//与以往的结果比较，取最大值</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            r++;<span class="comment">//右移右指针</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/425137694.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <div id="gitalk-container" class="comment link"
+	 data-enable='true'
+	 data-ae='false'>查看评论</div>
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#395-%E8%87%B3%E5%B0%91%E6%9C%89-K-%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2"><span class="toc-number">1.</span> <span class="toc-text">395. 至少有 K 个重复字符的最长子串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">4.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">代码实现</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>计算机网络-入门概述 - JIAJUU</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JiaJuu,"> 
+    <meta name="description" content="基本概念网络：多台主机相连
+互联网：多个网络相连
+因特网：全球最大的互联网（基于TCP/IP体系）
+因特网两大组成部分
+边缘部分：连接在因特网上的众多主机，利用核心部分提供的服务实现通信。
+核心部分,"> 
+    <meta name="author" content="jiajuu"> 
+    <link rel="alternative" href="atom.xml" title="JIAJUU" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">JIAJUU</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://jiajuu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">计算机网络-入门概述</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">计算机网络-入门概述</h1>
+        <div class="stuff">
+            <span>二月 26, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>网络：多台主机相连</p>
+<p>互联网：多个网络相连</p>
+<p>因特网：全球最大的互联网（基于TCP/IP体系）</p>
+<h1 id="因特网两大组成部分"><a href="#因特网两大组成部分" class="headerlink" title="因特网两大组成部分"></a>因特网两大组成部分</h1><blockquote>
+<p>边缘部分：连接在因特网上的众多主机，利用核心部分提供的服务实现通信。</p>
+<p>核心部分：由许多路由器实现互连，对网络边缘的主机提供连通性，使边缘部分的众多主机之间能够互相通信。</p>
+</blockquote>
+<h2 id="边缘部分的连接方式"><a href="#边缘部分的连接方式" class="headerlink" title="边缘部分的连接方式"></a>边缘部分的连接方式</h2><ul>
+<li>客户端/服务器方式(C/S)</li>
+<li>对等连接方式(P2P)</li>
+</ul>
+<h2 id="核心部分的连接方式"><a href="#核心部分的连接方式" class="headerlink" title="核心部分的连接方式"></a>核心部分的连接方式</h2><ul>
+<li>电路交换，常见于核心路由之间</li>
+<li>报文交换</li>
+<li>分组交换</li>
+</ul>
+<h1 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h1><ul>
+<li>速率</li>
+<li>带宽</li>
+<li>吞吐量</li>
+<li>时延<ul>
+<li>发送时延</li>
+<li>传送时延</li>
+<li>处理时延</li>
+<li>排队时延</li>
+</ul>
+</li>
+<li>时延带宽积<code>时延带宽积 = 传播时延 * 带宽</code></li>
+<li>利用率<ul>
+<li>信道利用率<code>信道利用率 = 信道有数据时间 / 信道使用的总时间</code></li>
+<li>网络利用率<code>网络利用率 = 信道利用率的加权平均</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><h2 id="七层结构模型"><a href="#七层结构模型" class="headerlink" title="七层结构模型"></a>七层结构模型</h2><table>
+<thead>
+<tr>
+<th>层级名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td>应用程序</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>加密、压缩</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>服务器和客户端建立的会话</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>可靠传输(建立会话)，不可靠传输(不建立会话)、流量控制</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>选择最优路径，添加IP地址编址</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>添加物理层地址MAC</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>规定电压、接口等标准</td>
+</tr>
+</tbody></table>
+<h2 id="五层结构模型"><a href="#五层结构模型" class="headerlink" title="五层结构模型"></a>五层结构模型</h2><table>
+<thead>
+<tr>
+<th>层级名称</th>
+<th>传输单位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+<td>传输数据单元PDU</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>报文数据段</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>IP数据报(IP分组)，若数据包大于1500字节会分片</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>数据帧</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>比特</td>
+</tr>
+</tbody></table>
+<h2 id="四层结构模型"><a href="#四层结构模型" class="headerlink" title="四层结构模型"></a>四层结构模型</h2><table>
+<thead>
+<tr>
+<th>层级名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用层</td>
+</tr>
+<tr>
+<td>传输层</td>
+</tr>
+<tr>
+<td>网络层</td>
+</tr>
+<tr>
+<td>链路层</td>
+</tr>
+</tbody></table>
+<h2 id="网络设备与结构模型的关系"><a href="#网络设备与结构模型的关系" class="headerlink" title="网络设备与结构模型的关系"></a>网络设备与结构模型的关系</h2><ul>
+<li>路由器：负责到最高到网络层</li>
+<li>交换机：负责到数据链路层，会解析出MAC地址存储转发</li>
+<li>集线器：负责物理层，直接转发</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/425137694.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <div id="gitalk-container" class="comment link"
+	 data-enable='true'
+	 data-ae='false'>查看评论</div>
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E4%B8%A4%E5%A4%A7%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="toc-number">2.</span> <span class="toc-text">因特网两大组成部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E9%83%A8%E5%88%86%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">边缘部分的连接方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">核心部分的连接方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">3.</span> <span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E5%B1%82%E7%BB%93%E6%9E%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">七层结构模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%B1%82%E7%BB%93%E6%9E%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">五层结构模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%B1%82%E7%BB%93%E6%9E%84%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.3.</span> <span class="toc-text">四层结构模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E4%B8%8E%E7%BB%93%E6%9E%84%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.4.</span> <span class="toc-text">网络设备与结构模型的关系</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

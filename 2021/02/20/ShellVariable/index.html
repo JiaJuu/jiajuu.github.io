@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shell-变量 - JIAJUU</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JiaJuu,"> 
+    <meta name="description" content="环境变量
+顾名思义，系统环境变量就是系统提供的共享变量，针对于所有Shell程序
+存在于shell的配置文件中，linux系统启动时就会加载。
+
+
+系统级环境变量
+Shell环境加载全局配置文件中的,"> 
+    <meta name="author" content="jiajuu"> 
+    <link rel="alternative" href="atom.xml" title="JIAJUU" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">JIAJUU</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://jiajuu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Shell-变量</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Shell-变量</h1>
+        <div class="stuff">
+            <span>二月 20, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Shell/" rel="tag">Shell</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><blockquote>
+<p>顾名思义，系统环境变量就是系统提供的共享变量，针对于所有Shell程序</p>
+<p>存在于shell的配置文件中，linux系统启动时就会加载。</p>
+</blockquote>
+<ul>
+<li><p><strong>系统级环境变量</strong></p>
+<p>Shell环境加载全局配置文件中的变量，针对所有用户所有Shell程序，全局共享</p>
+<p><strong>全局配置文件：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile</span><br><span class="line">/etc/profile.d/*.sh</span><br><span class="line">/etc/bashrc</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>用户界环境变量</strong></p>
+<p>Shell环境加载个人配置文件中的变量，针对当前用户所有Shell程序，登陆用户独享</p>
+<p> <strong>个人配置文件：</strong></p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/home/用户目录/.bash_profile</span><br><span class="line">/home/用户目录/.bashrc</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<p><code>env</code>查询当前Shell系统环境变量</p>
+<p><code>set</code>查询当前Shell所有变量，包括系统环境变量、自定义变量、函数</p>
+<p><strong>常用的环境变量：</strong></p>
+<table>
+<thead>
+<tr>
+<th>变量名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>PATH</strong></td>
+<td><strong>和windows环境变量PATH功能相似，设置命令的搜索路径，’:’为分割</strong></td>
+</tr>
+<tr>
+<td>HOME</td>
+<td>当前用户主目录<code>/root</code></td>
+</tr>
+<tr>
+<td>SHELL</td>
+<td>当前shell解释器类型<code>/bin/bash</code></td>
+</tr>
+<tr>
+<td><strong>HISTFILE</strong></td>
+<td><strong>显示当前用户执行命令的历史列表文件<code>/root/.bash_history</code></strong></td>
+</tr>
+<tr>
+<td>PWD</td>
+<td>显示当前所在路径</td>
+</tr>
+<tr>
+<td>OLDPWD</td>
+<td>显示之前的路径</td>
+</tr>
+<tr>
+<td>HOSTNAME</td>
+<td>显示当前主机名</td>
+</tr>
+<tr>
+<td>HOSTTYPE</td>
+<td>显示主机的架构</td>
+</tr>
+<tr>
+<td><strong>LANG</strong></td>
+<td><strong>显示当前系统语言环境<code>zh_CN.UTF-8</code></strong></td>
+</tr>
+</tbody></table>
+<h2 id="自定义系统环境变量"><a href="#自定义系统环境变量" class="headerlink" title="自定义系统环境变量"></a>自定义系统环境变量</h2><blockquote>
+<p>用户进入Shell环境初始化时，会加载全局配置文件<code>/etc/profile</code>里面的环境变量</p>
+<p>所以我们可以把所有Shell程序或命令使用的变量全部在<code>/etc/profile</code>文件里面自定义</p>
+</blockquote>
+<ol>
+<li><p>编辑<code>/etc/profile</code>全局配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=/usr/local/jdk1.8.0_162</span><br><span class="line">CLASSPATH=.:$JAVA_HOME/lib</span><br><span class="line">PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">export  JAVA_HOME CLASSPATH PATH</span><br></pre></td></tr></table></figure></li>
+<li><p>手动重载全局配置文件，不然不会立即生效的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile </span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ol>
+<h1 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h1><ul>
+<li><p><strong>自定义局部变量</strong></p>
+<p>只能在一个脚本文件中使用的变量</p>
+<p><code>value_name=value</code>定义变量</p>
+<p><code>unset value_name</code>删除变量</p>
+<p><code>$value_name</code>查询变量的值</p>
+<p><code>$&#123;value_name&#125;</code>也是查询变量名的值，能够防止歧异</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo Hello $&#123;value_name&#125;!!!#把！！！分隔开来</span><br></pre></td></tr></table></figure>
+<p><strong>P.S.</strong></p>
+<ul>
+<li><p>不能以数字开头</p>
+</li>
+<li><p>等号两侧不要有空格</p>
+</li>
+<li><p>bash环境下，变量默认类型时字符串类型，无法进行数值运算</p>
+</li>
+<li><p>变量的值有空格需要用””括起来</p>
+</li>
+<li><p>不能使用Shell关键字作为变量名称</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>自定义常量</strong></p>
+<p>定义以后无法再修改，也叫只读变量</p>
+<p><code>readonly varlue_name</code>定义常量</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>自定义全局变量</strong></p>
+<blockquote>
+<p>举个栗子：现在有两个Shell脚本文件A和B</p>
+<p>如果我们在A文件中执行B文件，那么这个时候A就是父Shell环境，B为子Shell环境</p>
+<p>那么，子Shell就无法使用父Shell的变量了</p>
+<p>这个时候，全局变量就隆重登场了！</p>
+</blockquote>
+<p><code>export value_name1 value_name2</code>声明全局变量</p>
+</li>
+</ul>
+<h2 id="字符串变量"><a href="#字符串变量" class="headerlink" title="字符串变量"></a>字符串变量</h2><ul>
+<li><p><strong>字符串变量的定义</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1=&#x27;abc&#x27; #强引用，不会解析&#x27;&#x27;内的变量，原样输出</span><br><span class="line">str2=&quot;abc&quot; #弱引用，能够解析&quot;&quot;内的变量，强烈推荐</span><br><span class="line">str3=abc #也能够解析变量，但是不能有空格，不然会被解析为其他命令</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>获取字符串长度</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;<span class="comment">#str&#125;</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>字符串拼接</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str1=jiajuu</span><br><span class="line">str2=&quot;Hello World&quot;</span><br><span class="line">str3=$&#123;str1&#125;$&#123;str2&#125; #无符号拼接</span><br><span class="line">str4=&quot;$&#123;str1&#125;$&#123;str2&#125;&quot; #双引号拼接，强烈推荐</span><br><span class="line">str5=$&#123;str1&#125;&quot;,&quot;$&#123;str2&#125; #混合拼接</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>字符串截取</strong></p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>${str:start:length}</strong></td>
+<td><strong>从左侧第0个开始，向右截取2个字符<code>$&#123;str:0:2&#125;</code></strong></td>
+</tr>
+<tr>
+<td><strong>${str:start}</strong></td>
+<td><strong>从左侧第11个开始，向右截取所有字符<code>$&#123;str:11&#125;</code></strong></td>
+</tr>
+<tr>
+<td>${str:0-start:length}</td>
+<td>从右侧第5个开始，向右侧截取2个字符<code>$&#123;str:0-5:2&#125;</code></td>
+</tr>
+<tr>
+<td>${str:0-start}</td>
+<td>从右侧第3个开始，向右截取所有字符<code>$&#123;str:0-3&#125;</code></td>
+</tr>
+<tr>
+<td>${str#*chars}</td>
+<td>截取从左往右第一个e右边的所有字符<code>$&#123;str#*e&#125;</code></td>
+</tr>
+<tr>
+<td>${str##*chars}</td>
+<td>截取从左往右最后一个e右边的所有字符<code>$&#123;str#*e&#125;</code></td>
+</tr>
+<tr>
+<td>${str%chars*}</td>
+<td>截取从右往左第一个e左边的所有字符<code>$&#123;str%e*&#125;</code></td>
+</tr>
+<tr>
+<td>${str%%chars*}</td>
+<td>截取从右往左最后一个e左边的所有字符<code>$&#123;str%e*&#125;</code></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="索引数组"><a href="#索引数组" class="headerlink" title="索引数组"></a>索引数组</h2><blockquote>
+<p>Bash Shell中仅支持一维数组，不支持多维数组</p>
+</blockquote>
+<ul>
+<li><p><strong>数组的定义</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">方式1,例如nums=(5 2 0 13 14 <span class="string">&quot;jiajuu&quot;</span>)</span></span><br><span class="line">array_name1=(item1 item2 ...)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">方式2，例如str=([1]=<span class="string">&quot;jiajuu&quot;</span> [3]=<span class="string">&quot;666&quot;</span> [5]=<span class="string">&quot;wuhu&quot;</span>),长度仍为3</span></span><br><span class="line">array_name2=([index1]=item2 [index2]=item2 ...) </span><br></pre></td></tr></table></figure></li>
+<li><p><strong>数组的获取</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">获取数组其中一个元素</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;arr[index]&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">获取数组所有元素</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;arr[@]&#125;</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;arr[*]&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">获取数组的长度或个数</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;<span class="comment">#arr[@]&#125;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;<span class="comment">#arr[*]&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">获取数组指定元素的字符长度</span></span><br><span class="line"><span class="meta">$</span><span class="bash">&#123;<span class="comment">#arr[index]&#125;</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>数组的拼接</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array_new=($arr1[@] $arr2[@] ...)</span><br><span class="line">array_new=($arr1[*] $arr2[*] ...)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>数组的删除</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">删除数组指定元素</span></span><br><span class="line">unset array_name[index]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">删除整个数组</span></span><br><span class="line">unset array_name</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h1 id="特殊符号变量"><a href="#特殊符号变量" class="headerlink" title="特殊符号变量"></a>特殊符号变量</h1><p><code>$n</code>表示执行脚本文件时传入的参数</p>
+<blockquote>
+<p><code>$0</code>获取当前脚本的文件名</p>
+<p><code>$1~$9</code>获取第1个~第9个传入的参数</p>
+<p><code>$&#123;num&#125;</code>第十个以上的参数</p>
+</blockquote>
+<p><code>$*</code> <code>$@</code>获取执行脚本文件传入的所有参数</p>
+<p><strong>区别：</strong></p>
+<ul>
+<li><p>不使用””括起来的功能时相同的</p>
+</li>
+<li><p>但是使用””括起来以后</p>
+<p><code>$*</code>获取所有参数拼接为一个字符串,<code>&quot;$1 $2 $3 $4 $5 $6 $7 $8&quot;</code></p>
+<p><code>$@</code>获取一组参数列表对象，<code> &quot;$1&quot; &quot;$2&quot;&quot;$3&quot; &quot;$4&quot; &quot;$5&quot; &quot;$6&quot; &quot;$7&quot; &quot;$8&quot;</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">直接输出所有参数</span></span><br><span class="line">echo &#x27;使用$*直接输出&#x27;$*</span><br><span class="line">echo &#x27;使用$@直接输出&#x27;$@</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">循环遍历输出所有传入参数</span></span><br><span class="line">echo &#x27;循环遍历输出$*所有参数&#x27;</span><br><span class="line">for item in &quot;$*&quot;</span><br><span class="line">do</span><br><span class="line">	echo $item</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &#x27;循环遍历输出$@所有参数&#x27;</span><br><span class="line">for item in &quot;$@&quot;</span><br><span class="line">do</span><br><span class="line">	echo $item</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p><code>$#</code>获取所有传入参数的个数</p>
+</li>
+</ul>
+<p><code>$?</code>获取上一个Shell命令的退出状态码，或者时函数的返回值</p>
+<blockquote>
+<p>每一个Shell命令的执行都有返回值，用于说明命令是否执行成功</p>
+<p>通常来说，0表示成功，非0表示失败</p>
+</blockquote>
+<p><code>$$</code>获取当前Shell环境的进程ID号</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/425137694.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <div id="gitalk-container" class="comment link"
+	 data-enable='true'
+	 data-ae='false'>查看评论</div>
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">自定义系统环境变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">自定义变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F"><span class="toc-number">2.1.</span> <span class="toc-text">字符串变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E6%95%B0%E7%BB%84"><span class="toc-number">2.2.</span> <span class="toc-text">索引数组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">特殊符号变量</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

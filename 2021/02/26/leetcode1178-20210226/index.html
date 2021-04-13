@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="cn" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Leetcode 1178.猜字谜 2021.02.26 - JIAJUU</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JiaJuu,"> 
+    <meta name="description" content="1178.猜字谜
+
+难度：简浑南
+
+
+
+外国友人仿照中国字谜设计了一个英文版猜字谜小游戏，请你来猜猜看吧。
+字谜的迷面 puzzle 按字符串形式给出，如果一个单词 word 符合下面两个条件，那么,"> 
+    <meta name="author" content="jiajuu"> 
+    <link rel="alternative" href="atom.xml" title="JIAJUU" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">JIAJUU</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://jiajuu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Leetcode 1178.猜字谜 2021.02.26</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Leetcode 1178.猜字谜 2021.02.26</h1>
+        <div class="stuff">
+            <span>二月 26, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="1178-猜字谜"><a href="#1178-猜字谜" class="headerlink" title="1178.猜字谜"></a>1178.猜字谜</h1><blockquote>
+<ul>
+<li>难度：简浑南</li>
+</ul>
+<br>
+
+<p>外国友人仿照中国字谜设计了一个英文版猜字谜小游戏，请你来猜猜看吧。</p>
+<p>字谜的迷面 <code>puzzle</code> 按字符串形式给出，如果一个单词 <code>word</code> 符合下面两个条件，那么它就可以算作谜底：</p>
+<ul>
+<li>单词 <code>word</code> 中包含谜面 <code>puzzle</code> 的第一个字母。</li>
+<li>单词 <code>word</code> 中的每一个字母都可以在谜面 <code>puzzle</code> 中找到。<br>例如，如果字谜的谜面是 “abcdefg”，那么可以作为谜底的单词有 “faced”, “cabbage”, 和 “baggage”；而 “beefed”（不含字母 “a”）以及 “based”（其中的 “s” 没有出现在谜面中）。</li>
+</ul>
+<p>返回一个答案数组 <code>answer</code>，数组中的每个元素 <code>answer[i]</code> 是在给出的单词列表 <code>words</code> 中可以作为字谜迷面 <code>puzzles[i]</code> 所对应的谜底的单词数目。</p>
+</blockquote>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>示例1：</p>
+<blockquote>
+<p>输入：<br>words = [“aaaa”,”asas”,”able”,”ability”,”actt”,”actor”,”access”],<br>puzzles = [“aboveyz”,”abrodyz”,”abslute”,”absoryz”,”actresz”,”gaswxyz”]</p>
+<p>输出：[1,1,3,2,4,0]</p>
+<p>解释：<br>1 个单词可以作为 “aboveyz” 的谜底 : “aaaa”<br>1 个单词可以作为 “abrodyz” 的谜底 : “aaaa”<br>3 个单词可以作为 “abslute” 的谜底 : “aaaa”, “asas”, “able”<br>2 个单词可以作为 “absoryz” 的谜底 : “aaaa”, “asas”<br>4 个单词可以作为 “actresz” 的谜底 : “aaaa”, “asas”, “actt”, “access”<br>没有单词可以作为 “gaswxyz” 的谜底，因为列表中的单词都不含字母 ‘g’。</p>
+</blockquote>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><blockquote>
+<ul>
+<li>1 &lt;= words.length &lt;= 10^5</li>
+<li>4 &lt;= words[i].length &lt;= 50</li>
+<li>1 &lt;= puzzles.length &lt;= 10^4</li>
+<li>puzzles[i].length == 7</li>
+<li>words[i][j], puzzles[i][j] 都是小写英文字母。</li>
+<li>每个 puzzles[i] 所包含的字符都不重复。</li>
+</ul>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li><p>二进制状态压缩 + 寻找所有子集</p>
+<ol>
+<li><p>遍历所有<code>words</code>数组中的字符串</p>
+<ol>
+<li><p>遍历<code>word</code>字符串的所有字符</p>
+</li>
+<li><p>出现过的所有字符把<code>bitset</code>对应的<code>bit</code>位设置成1(总共最多26个位，因为只用26个字母嘛)</p>
+<blockquote>
+<p>例如：<code>ace</code> 对应 <code>10101</code></p>
+</blockquote>
+</li>
+<li><p>把的<code>bitset</code>存入哈希表中</p>
+</li>
+</ol>
+</li>
+<li><p>遍历所有<code>puzzles</code>数组</p>
+<ol>
+<li><p>遍历<code>puzzle</code>字符串的所有字符</p>
+</li>
+<li><p>出现过的所有字符把<code>bitset</code>对应的<code>bit</code>位设置成1</p>
+</li>
+<li><p>记录头字符的在<code>bitset</code>中的位置</p>
+</li>
+<li><p>遍历<code>bitset</code>的子集<code>cur</code>，直至<code>cur</code>为0</p>
+<ol>
+<li><p>如果子集<code>cur</code>中的头字符对应的<code>bit</code>位为1，则查询哈希表是否存在当前子集<code>cur</code></p>
+<ul>
+<li>存在，则<code>total</code>获取哈希表关键字<code>cur</code>对应的值</li>
+<li>不存在，则跳过</li>
+</ul>
+</li>
+<li><p>刷新<code>cur</code>，获取下一个子集</p>
+<p><img src="https://jiajuu.top/2021/02/26/leetcode1178-20210226/GetCur.png" alt="获取子集"></p>
+</li>
+</ol>
+</li>
+<li><p>把<code>total</code>存取数组<code>res</code>中</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">findNumOfValidWords</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; puzzles)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">    <span class="comment">//遍历所有words数组中的字符串</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; str : words)&#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">bitset</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//遍历word字符串的所有字符</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; c : str)</span><br><span class="line">            <span class="comment">//出现过的所有字符把bitset对应的bit位设置成1</span></span><br><span class="line">            <span class="built_in">bitset</span> |= <span class="number">1</span> &lt;&lt; (c-<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">        <span class="comment">//把所有的bitset存入哈希表中</span></span><br><span class="line">        ++<span class="built_in">map</span>[<span class="built_in">bitset</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//遍历所有puzzles数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; str : puzzles)&#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">bitset</span> = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//遍历puzzle字符串的所有字符</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; c : str)</span><br><span class="line">            <span class="comment">//出现过的所有字符把bitset对应的bit位设置成1</span></span><br><span class="line">            <span class="built_in">bitset</span> |= <span class="number">1</span> &lt;&lt; (c-<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">        <span class="comment">//记录头字符的在`bitset`中的位置</span></span><br><span class="line">        <span class="keyword">int</span> firstChar = str[<span class="number">0</span>]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="built_in">bitset</span>;</span><br><span class="line">        <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//遍历bitset的子集cur，直至cur为0</span></span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//如果子集cur中的头字符对应的bit位为1，则查询哈希表是否存在当前子集cur</span></span><br><span class="line">            <span class="keyword">if</span>((cur &gt;&gt; firstChar) &amp; <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">auto</span> it = <span class="built_in">map</span>.find(cur);</span><br><span class="line">                <span class="comment">//存在，则total获取哈希表关键字cur对应的值</span></span><br><span class="line">                <span class="keyword">if</span>(it != <span class="built_in">map</span>.end()) total += <span class="built_in">map</span>[cur];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//刷新cur，获取下一个子集</span></span><br><span class="line">            cur = (cur - <span class="number">1</span>) &amp; <span class="built_in">bitset</span>;    </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//把total存取数组res中</span></span><br><span class="line">        res.push_back(total);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/425137694.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <div id="gitalk-container" class="comment link"
+	 data-enable='true'
+	 data-ae='false'>查看评论</div>
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1178-%E7%8C%9C%E5%AD%97%E8%B0%9C"><span class="toc-number">1.</span> <span class="toc-text">1178.猜字谜</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">4.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">代码实现</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
